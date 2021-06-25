@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +17,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailShowTime"></activity>
+        <activity android:name=".ChooseSeat"></activity>
+        <activity android:name=".PayTicket" />
+        <activity android:name=".AccountInfo" />
+        <activity android:name=".ChooseTypePayment" />
+        <activity android:name=".Payment" />
+        <activity android:name=".Information" />
+        <activity android:name=".Introduce" />
+        <activity android:name=".Login" />
+        <activity android:name=".Service" />
+        <activity android:name=".ChangePassword" />
+        <activity android:name=".DetailShowTime" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />

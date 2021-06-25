@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.MenuItem;
@@ -14,8 +16,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.bookingmovie.Database.DatabaseUser;
+import com.example.bookingmovie.Database.BookingCinemaDatabase;
+import com.example.bookingmovie.Database.ConnectionHelper;
+import com.example.bookingmovie.Database.Database;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.regex.Pattern;
 
@@ -30,21 +35,45 @@ public class Registration extends AppCompatActivity {
     private TextInputEditText hoten;
     private TextInputEditText email;
     private TextInputEditText sodienthoai;
+    private TextInputEditText username;
+    private TextInputEditText passwordCF;
+    private TextInputLayout hotenl;
+    private TextInputLayout emaill;
+    private TextInputLayout sodienthoail;
+    private TextInputLayout passwordl;
+    private TextInputLayout usernamel;
+    private TextInputLayout passwordCFl;
+
     private  Button buttonReg;
-    DatabaseUser DB;
+    Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        database = new Database();
+
         password = findViewById(R.id.txt_Reg_Pass);
         hoten = findViewById(R.id.txt_Reg_Name);
         email = findViewById(R.id.txt_Reg_Email);
         sodienthoai = findViewById(R.id.txt_Reg_SDT);
-        buttonReg = findViewById(R.id.btn_reg_submit);
-        DB = new DatabaseUser(Registration.this);
+        username = findViewById(R.id.txt_Username);
+        passwordCF = findViewById(R.id.txt_Reg_Pass_Cof);
+        hotenl = findViewById(R.id.txt_Reg_Name_layout);
+        emaill = findViewById(R.id.txt_Reg_Email_layout);
+        sodienthoail = findViewById(R.id.txt_Reg_SDT_layout);
+        passwordl = findViewById(R.id.txt_Reg_Pass_layout);
+        usernamel = findViewById(R.id.txt_Username_layout);
+        passwordCFl = findViewById(R.id.txt_Reg_Pass_Cof_layout);
+
+        buttonReg = findViewById(R.id.btn_capnhap);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Đăng kí tài khoản");
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#000000"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,12 +82,14 @@ public class Registration extends AppCompatActivity {
                 String phone = sodienthoai.getText().toString();
                 String mail = email.getText().toString();
                 String name = hoten.getText().toString();
+                String user = username.getText().toString();
 
-                if (validateEmail() == true && validateName() == true &&  validatePhone() == true && validatePassword() == true){
-                    Boolean checkuser = DB.checkUsername(mail);
-                    if (checkuser == false){
-                        Boolean insert = DB.insertData(mail,pass,phone,name);
-                        if (insert==true){
+                if (validateEmail() == true && validateName() == true && validatePhone() == true && validatePassword() == true && validateConfirm() == true && validateUsername() == true) {
+                    int checkuser = database.checkUser(user);
+                    int checkmail = database.checkEmail(mail);
+                    if (checkuser == 0) {
+                        if (checkmail == 0) {
+                            database.InsertTaiKhoan(user,name,pass,mail,phone);
                             AlertDialog.Builder b = new AlertDialog.Builder(Registration.this);
                             b.setTitle("Thông báo");
                             b.setMessage("Đăng kí tài khoản mới thành công!!!");
@@ -70,11 +101,10 @@ public class Registration extends AppCompatActivity {
                             });
                             AlertDialog al = b.create();
                             al.show();
-                        }
-                    }
-                    else {
-                        Toast.makeText(Registration.this,"Email đăng kí đã trùng. Vui lòng Email mới",Toast.LENGTH_SHORT).show();
-                    }
+                        } else
+                            Toast.makeText(Registration.this, "Email đăng kí đã trùng. Vui lòng email mới", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(Registration.this, "Tên đăng nhập trùng. Vui lòng chọn tên mới", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -90,20 +120,18 @@ public class Registration extends AppCompatActivity {
     }
     public boolean validateEmail() {
 
-
         String emailInput = email.getText().toString().trim();
 
-
         if (emailInput.isEmpty()) {
-            email.setError("Trường email không được để trống");
+            emaill.setError("Trường email không được để trống");
             return false;
         }
 
         else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
-            email.setError("Vui lòng điền đúng email");
+            emaill.setError("Vui lòng điền đúng email");
             return false;
         } else {
-            email.setError(null);
+            emaill.setError(null);
             return true;
         }
     }
@@ -111,21 +139,21 @@ public class Registration extends AppCompatActivity {
     public boolean validatePassword() {
         String passwordInput = password.getText().toString().trim();
         if (passwordInput.isEmpty()) {
-            password.setError("Trường mật khẩu không được để trống");
+            passwordl.setError("Trường mật khẩu không được để trống");
             return false;
         }
         else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
-            password.setError("Mật khẩu không đủ mạnh. Mật khẩu phải tối thiểu 8 kí tự, không kí tự trắng, và chứa các kí tự đặc biệt");
+            passwordl.setError("Mật khẩu không đủ mạnh. Mật khẩu phải tối thiểu 8 kí tự, không kí tự trắng, và chứa các kí tự đặc biệt");
             return false;
         } else {
-            password.setError(null);
+            passwordl.setError(null);
             return true;
         }
     }
     public boolean validateName() {
         String nameInput = hoten.getText().toString();
         if (nameInput.isEmpty()){
-            hoten.setError("Thiếu thông tin họ tên");
+            hotenl.setError("Thiếu thông tin họ tên");
             return false;
         }
         return true;
@@ -133,13 +161,38 @@ public class Registration extends AppCompatActivity {
     public boolean validatePhone() {
         String nameInput = sodienthoai.getText().toString();
         if (nameInput.isEmpty()){
-            sodienthoai.setError("Thiếu thông tin số điện thoại");
+            sodienthoail.setError("Thiếu thông tin số điện thoại");
             return false;
         }
         return true;
     }
+    public boolean validateUsername() {
+        String nameInput = username.getText().toString();
+        if (nameInput.isEmpty()){
+            usernamel.setError("Thiếu thông tin tên đăng nhập");
+            return false;
+        }
+        return true;
+    }
+    public boolean validateConfirm() {
+        String password1 = password.getText().toString();
+        String password2 = passwordCF.getText().toString();
+        if (password2.isEmpty()) {
+            passwordCFl.setError("Trường mật khẩu không được để trống");
+            return false;
+        }else
+        if (password2.equals(password1)==false){
+            passwordCFl.setError("Không trùng với mật khẩu đã nhập");
+            return false;
+        }
+        else
+        {
+            passwordCFl.setError(null);
+            return true;
+        }
+    }
     public void confirmInput(View v) {
-        if (!validateEmail() | !validatePassword() | !validateName() | !validatePhone()) {
+        if (!validateEmail() | !validatePassword() | !validateName() | !validatePhone()| !validateUsername()|validateConfirm()) {
             return;
         }
     }

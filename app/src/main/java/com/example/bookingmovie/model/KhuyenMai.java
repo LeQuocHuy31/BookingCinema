@@ -5,18 +5,23 @@ import java.util.Date;
 public class KhuyenMai {
     private String id;
     private String tenKhuyenMai;
-    private int img;
     private String noiDung;
-    private Date ngayBatDau;
-    private Date ngayKetThuc;
 
-    public KhuyenMai(String id, String tenKhuyenMai, int img, String noiDung, Date ngayBatDau, Date ngayKetThuc) {
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    private String img;
+
+    public KhuyenMai(String id, String tenKhuyenMai, String noiDung, String img) {
         this.id = id;
         this.tenKhuyenMai = tenKhuyenMai;
-        this.img = img;
         this.noiDung = noiDung;
-        this.ngayBatDau = ngayBatDau;
-        this.ngayKetThuc = ngayKetThuc;
+        this.img = img;
     }
 
     public String getId() {
@@ -35,13 +40,7 @@ public class KhuyenMai {
         this.tenKhuyenMai = tenKhuyenMai;
     }
 
-    public int getImg() {
-        return img;
-    }
 
-    public void setImg(int img) {
-        this.img = img;
-    }
 
     public String getNoiDung() {
         return noiDung;
@@ -51,19 +50,4 @@ public class KhuyenMai {
         this.noiDung = noiDung;
     }
 
-    public Date getNgayBatDau() {
-        return ngayBatDau;
-    }
-
-    public void setNgayBatDau(Date ngayBatDau) {
-        this.ngayBatDau = ngayBatDau;
-    }
-
-    public Date getNgayKetThuc() {
-        return ngayKetThuc;
-    }
-
-    public void setNgayKetThuc(Date ngayKetThuc) {
-        this.ngayKetThuc = ngayKetThuc;
-    }
 }

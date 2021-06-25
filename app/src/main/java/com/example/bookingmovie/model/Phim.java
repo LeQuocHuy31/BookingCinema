@@ -6,12 +6,14 @@ public class Phim {
     private String tenPhim;
     private String noiDung;
     private String kiemDuyet;
-    private Date ngayKhoiChieu;
+    private String ngayKhoiChieu;
     private String theLoai;
-    private int thoiLuong;
-    private int image;
+    private String thoiLuong;
+    private String image;
+    private String tinhTrang;
+    private String idtrailer;
 
-    public Phim(String id, String tenPhim, String noiDung, String kiemDuyet, Date ngayKhoiChieu, String theLoai, int thoiLuong, int image) {
+    public Phim(String id, String tenPhim, String noiDung, String kiemDuyet, String ngayKhoiChieu, String theLoai, String thoiLuong, String image, String tinhTrang, String idtrailer) {
         this.id = id;
         this.tenPhim = tenPhim;
         this.noiDung = noiDung;
@@ -20,7 +22,13 @@ public class Phim {
         this.theLoai = theLoai;
         this.thoiLuong = thoiLuong;
         this.image = image;
+        this.tinhTrang = tinhTrang;
+        this.idtrailer = idtrailer;
     }
+
+    public Phim() {
+    }
+
 
     public String getId() {
         return id;
@@ -54,11 +62,11 @@ public class Phim {
         this.kiemDuyet = kiemDuyet;
     }
 
-    public Date getNgayKhoiChieu() {
+    public String getNgayKhoiChieu() {
         return ngayKhoiChieu;
     }
 
-    public void setNgayKhoiChieu(Date ngayKhoiChieu) {
+    public void setNgayKhoiChieu(String ngayKhoiChieu) {
         this.ngayKhoiChieu = ngayKhoiChieu;
     }
 
@@ -70,19 +78,36 @@ public class Phim {
         this.theLoai = theLoai;
     }
 
-    public int getThoiLuong() {
+    public String getThoiLuong() {
         return thoiLuong;
     }
 
-    public void setThoiLuong(int thoiLuong) {
+    public void setThoiLuong(String thoiLuong) {
         this.thoiLuong = thoiLuong;
     }
 
-    public int getImage() {
+
+    public String getIdtrailer() {
+        return idtrailer;
+    }
+
+    public void setIdtrailer(String idtrailer) {
+        this.idtrailer = idtrailer;
+    }
+
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getTinhTrang() {
+        return tinhTrang;
+    }
+
+    public void setTinhTrang(String tinhTrang) {
+        this.tinhTrang = tinhTrang;
     }
 }

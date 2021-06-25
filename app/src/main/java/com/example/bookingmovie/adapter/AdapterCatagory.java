@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import com.example.bookingmovie.R;
 import com.example.bookingmovie.modelshowtime.Catagory;
 
-
 import java.util.List;
 
 

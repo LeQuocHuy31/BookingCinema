@@ -2,9 +2,14 @@ package com.example.bookingmovie;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
@@ -13,6 +18,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bookingmovie.Database.BookingCinemaDatabase;
+import com.example.bookingmovie.Database.Database;
+import com.example.bookingmovie.model.TaiKhoan;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.regex.Pattern;
@@ -22,7 +30,8 @@ public class forgetpass2 extends AppCompatActivity {
     private TextInputEditText txt2;
     private TextInputEditText txt3;
     private Button btnConfirm;
-    String ma;
+    Database database;
+    String ma,email;
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[@#$%^&+=])" +     // at least 1 special character
@@ -36,9 +45,13 @@ public class forgetpass2 extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Đổi mật khẩu");
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = preferences.edit();
-        ma = preferences.getString(getString(R.string.confirm),"");
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#000000"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        database = new Database();
+        Intent intent =getIntent();
+        ma = intent.getStringExtra("ma");
+        email = intent.getStringExtra("email");
         txt1 =findViewById(R.id.txt_1);
         txt2 =findViewById(R.id.txt_2);
         txt3 =findViewById(R.id.txt_3);
@@ -47,10 +60,21 @@ public class forgetpass2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validatePassword()==true&&validateConfirm()==true&&validateConfirmPass()==true){
-                    Toast.makeText(getApplicationContext(),"Đổi chưa biết",Toast.LENGTH_SHORT).show();
+                    TaiKhoan taiKhoan = database.getChiTietTaiKhoan(email);
+                    taiKhoan.setPassword(txt1.getText().toString());
+                    database.updateTaiKhoan(taiKhoan);
+                    AlertDialog.Builder b = new AlertDialog.Builder(forgetpass2.this);
+                    b.setTitle("Thông báo");
+                    b.setMessage("Đổi mật khẩu thành công!!!");
+                    b.setPositiveButton("Kết thúc!", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(forgetpass2.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    AlertDialog al = b.create();
+                    al.show();
                 }
-                else
-                    Toast.makeText(getApplicationContext(),"Đổi ko được biết",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -65,17 +89,13 @@ public class forgetpass2 extends AppCompatActivity {
     }
     public boolean validatePassword() {
         String passwordInput = txt1.getText().toString().trim();
-        // if password field is empty
-        // it will display error message "Field can not be empty"
         if (passwordInput.isEmpty()) {
             txt1.setError("Trường mật khẩu không được để trống");
             return false;
         }
 
-        // if password does not matches to the pattern
-        // it will display an error message "Password is too weak"
         else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
-            txt1.setError("Mật khẩu không đủ mạnh. Mật khẩu phải tối thiểu 8 kí tự, không kí tự trắng, và chứa các kí tự đăck biệt");
+            txt1.setError("Mật khẩu không đủ mạnh. Mật khẩu phải tối thiểu 8 kí tự, không kí tự trắng, và chứa các kí tự đặc biệt");
             return false;
         } else {
             txt1.setError(null);

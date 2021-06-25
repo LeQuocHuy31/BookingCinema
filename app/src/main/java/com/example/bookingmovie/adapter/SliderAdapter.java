@@ -9,19 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
 import com.example.bookingmovie.R;
-import com.example.bookingmovie.SliderItem;
 import com.example.bookingmovie.SliderItemClickListener;
+import com.example.bookingmovie.model.KhuyenMai;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
 
 public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder> {
     private Context context;
-    private List<SliderItem> sliderItems;
+    private List<KhuyenMai> sliderItems;
     private ViewPager2 viewPager2;
     SliderItemClickListener sliderItemClickListener;
-    SliderAdapter(Context context, List<SliderItem> sliderItems, ViewPager2 viewPager2, SliderItemClickListener sliderItemClickListener1){
+    public SliderAdapter(Context context, List<KhuyenMai> sliderItems, ViewPager2 viewPager2, SliderItemClickListener sliderItemClickListener1){
         this.context = context;
         this.sliderItems = sliderItems;
         this.viewPager2 = viewPager2;
@@ -63,8 +64,8 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
                 }
             });
         }
-        void setImage(SliderItem sliderItem){
-            imageView.setImageResource(sliderItem.getImage());
+        void setImage(KhuyenMai sliderItem){
+            Glide.with(context).load(sliderItem.getImg()).into(imageView);
         }
     }
     private  Runnable runnable = new Runnable() {

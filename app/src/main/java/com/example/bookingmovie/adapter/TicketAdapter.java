@@ -12,17 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bookingmovie.R;
-import com.example.bookingmovie.Ticket;
 import com.example.bookingmovie.TicketDetailActivity;
+import com.example.bookingmovie.model.VeUser;
 
 import java.util.List;
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.MyViewHolder> {
     private Context mContext;
-    private List<Ticket> mData;
+    private List<VeUser> mData;
 
-    public TicketAdapter(Context mContext, List<Ticket> mData) {
+    public TicketAdapter(Context mContext, List<VeUser> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -36,13 +37,16 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.movie.setText(mData.get(position).getNameMovie());
-        holder.date.setText(mData.get(position).getTime());
-        holder.seat.setText(mData.get(position).getSeat());
-        holder.room.setText(mData.get(position).getRoom());
-        holder.img.setImageResource(mData.get(position).getImgMovie());
+        holder.movie.setText(mData.get(position).getTenphim());
+        holder.date.setText(mData.get(position).getNgaychieu());
+        holder.seat.setText(mData.get(position).getVitrighe());
+        holder.room.setText(mData.get(position).getPhong());
+        Glide.with(mContext).load(mData.get(position).getImgphim()).into(holder.img);
+        holder.time.setText(mData.get(position).getThoigian());
+        holder.rap.setText(mData.get(position).getRap());
         holder.cardView.setOnClickListener(v -> {
             Intent intent = new Intent(mContext, TicketDetailActivity.class);
+            intent.putExtra("mave",mData.get(position).getIdve());
             mContext.startActivity(intent);
         });
     }
@@ -57,6 +61,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.MyViewHold
         private TextView seat;
         private TextView room;
         private ImageView img;
+        private TextView time;
+        private TextView rap;
         CardView cardView;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
@@ -64,6 +70,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.MyViewHold
             date = (TextView) itemView.findViewById(R.id.txt_ticket_date);
             seat = (TextView) itemView.findViewById(R.id.txt_ticket_seat);
             room = (TextView) itemView.findViewById(R.id.txt_ticket_room);
+            time = (TextView) itemView.findViewById(R.id.txt_ticket_time);
+            rap = itemView.findViewById(R.id.txt_ticket_rap);
             img = itemView.findViewById(R.id.img_phim);
             cardView = itemView.findViewById(R.id.ticket_id);
         }

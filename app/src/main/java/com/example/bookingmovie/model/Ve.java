@@ -4,21 +4,24 @@ import java.util.Date;
 
 public class Ve {
     private String id;
-    private Date ngayMua;
-    private String idKhachHang;
+    private String idKhachhang;
     private String idLichChieu;
-    private String idDichVu;
-    private int slDichVu;
     private String viTriGhe;
+    private String dichVu;
+    private String maVe;
+    private int tongTien;
 
-    public Ve(String id, Date ngayMua, String idKhachHang, String idLichChieu, String idDichVu, int slDichVu, String viTriGhe) {
+    public Ve(String id, String idKhachhang, String idLichChieu, String viTriGhe, String dichVu, String maVe, int tongTien) {
         this.id = id;
-        this.ngayMua = ngayMua;
-        this.idKhachHang = idKhachHang;
+        this.idKhachhang = idKhachhang;
         this.idLichChieu = idLichChieu;
-        this.idDichVu = idDichVu;
-        this.slDichVu = slDichVu;
         this.viTriGhe = viTriGhe;
+        this.dichVu = dichVu;
+        this.maVe = maVe;
+        this.tongTien = tongTien;
+    }
+
+    public Ve() {
     }
 
     public String getId() {
@@ -29,20 +32,12 @@ public class Ve {
         this.id = id;
     }
 
-    public Date getNgayMua() {
-        return ngayMua;
+    public String getIdKhachhang() {
+        return idKhachhang;
     }
 
-    public void setNgayMua(Date ngayMua) {
-        this.ngayMua = ngayMua;
-    }
-
-    public String getIdKhachHang() {
-        return idKhachHang;
-    }
-
-    public void setIdKhachHang(String idKhachHang) {
-        this.idKhachHang = idKhachHang;
+    public void setIdKhachhang(String idKhachhang) {
+        this.idKhachhang = idKhachhang;
     }
 
     public String getIdLichChieu() {
@@ -53,27 +48,35 @@ public class Ve {
         this.idLichChieu = idLichChieu;
     }
 
-    public String getIdDichVu() {
-        return idDichVu;
-    }
-
-    public void setIdDichVu(String idDichVu) {
-        this.idDichVu = idDichVu;
-    }
-
-    public int getSlDichVu() {
-        return slDichVu;
-    }
-
-    public void setSlDichVu(int slDichVu) {
-        this.slDichVu = slDichVu;
-    }
-
     public String getViTriGhe() {
         return viTriGhe;
     }
 
     public void setViTriGhe(String viTriGhe) {
         this.viTriGhe = viTriGhe;
+    }
+
+    public String getDichVu() {
+        return dichVu;
+    }
+
+    public void setDichVu(String dichVu) {
+        this.dichVu = dichVu;
+    }
+
+    public String getMaVe() {
+        return maVe;
+    }
+
+    public void setMaVe(String maVe) {
+        this.maVe = maVe;
+    }
+
+    public int getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(int tongTien) {
+        this.tongTien = tongTien;
     }
 }

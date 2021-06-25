@@ -1,38 +1,34 @@
 package com.example.bookingmovie.model;
 
 public class TaiKhoan {
-    private String id;
+    private int id;
     private String username;
     private String password;
     private String hoTen;
-    private String gioiTinh;
-    private String ngaySinh;
     private String email;
     private String sdt;
-    private int avatar;
+    private String avatar;
     private int diemTichLuy;
 
-    public TaiKhoan(String id, String username, String password, String hoTen, String gioiTinh, String ngaySinh, String email, String sdt, int avatar, int diemTichLuy) {
+    public TaiKhoan() {
+    }
+
+    public TaiKhoan(int id, String username, String password, String hoTen, String email, String sdt, String avatar, int diemTichLuy) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.hoTen = hoTen;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
         this.email = email;
         this.sdt = sdt;
         this.avatar = avatar;
         this.diemTichLuy = diemTichLuy;
     }
 
-    public TaiKhoan() {
-    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,22 +56,6 @@ public class TaiKhoan {
         this.hoTen = hoTen;
     }
 
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
-    public String getNgaySinh() {
-        return ngaySinh;
-    }
-
-    public void setNgaySinh(String ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -92,13 +72,6 @@ public class TaiKhoan {
         this.sdt = sdt;
     }
 
-    public int getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(int avatar) {
-        this.avatar = avatar;
-    }
 
     public int getDiemTichLuy() {
         return diemTichLuy;
@@ -106,5 +79,13 @@ public class TaiKhoan {
 
     public void setDiemTichLuy(int diemTichLuy) {
         this.diemTichLuy = diemTichLuy;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

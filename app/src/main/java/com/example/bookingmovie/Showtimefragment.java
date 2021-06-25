@@ -1,10 +1,14 @@
 package com.example.bookingmovie;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,11 +20,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookingmovie.Database.BookingCinemaDatabase;
+import com.example.bookingmovie.Database.Database;
 import com.example.bookingmovie.adapter.AdapterCatagory;
 import com.example.bookingmovie.adapter.LichChieuAdapter;
 import com.example.bookingmovie.model.LichChieu;
 import com.example.bookingmovie.modelshowtime.Catagory;
 import com.example.bookingmovie.modelshowtime.NgayChieu;
+import com.example.bookingmovie.modelshowtime.ThongTinLichChieu;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,18 +37,39 @@ public class Showtimefragment extends Fragment {
     private RecyclerView rcvLichChieu;
     private LichChieuAdapter lichChieuAdapter;
     private Spinner spnCatagory;
-    private AdapterCatagory adapterCatagory;
     private TextView tv_date;
+    private List<ThongTinLichChieu> list= new ArrayList<>();
     private int mDate, mMonth, mYear;
-    private BookingCinemaDatabase database;
+    private Database connectdata;
+    private String rapphim;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_showtime,container,false);
+
         spnCatagory=v.findViewById(R.id.spn_catagory);
-        adapterCatagory= new AdapterCatagory(getContext(),R.id.tv_selected,getListCatagory());
-        spnCatagory.setAdapter((adapterCatagory));
-        //set chọn ngày tháng chiểu phim
+        String[] RapPhim={"UIT cinema thủ đức","UIT cinema sinh viên"};//android.R.layout.simple_spinner_item
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,RapPhim);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCatagory.setAdapter(adapter);
+        spnCatagory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                rapphim =spnCatagory.getSelectedItem().toString();
+                SetThongTinLichChieu(rapphim);
+                SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("rapphim", rapphim);
+                editor.commit();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         tv_date= v.findViewById(R.id.tv_date);
         final Calendar calendar=Calendar.getInstance();
         SimpleDateFormat simpleDateFormat= new SimpleDateFormat("dd/MM/yyyy");
@@ -63,32 +90,20 @@ public class Showtimefragment extends Fragment {
                 datePickerDialog.show();
             }
         });
-        database = new BookingCinemaDatabase(getContext());
-        database.open();
+        rapphim =spnCatagory.getSelectedItem().toString();
         rcvLichChieu= v.findViewById(R.id.rcv_lichchieu);
+        SetThongTinLichChieu(rapphim);
+        return v;
+    }
+
+    private void SetThongTinLichChieu(String rapphim){
         lichChieuAdapter =new LichChieuAdapter(getContext());
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         rcvLichChieu.setLayoutManager(linearLayoutManager);
-        lichChieuAdapter.setData(database.getThongTinLichChieu());
+        connectdata =new Database();
+        list=connectdata.getThongTinLichChieu(rapphim);
+        lichChieuAdapter.setData(list);
         rcvLichChieu.setAdapter(lichChieuAdapter);
-        return  v;
     }
-    private List<Catagory> getListCatagory() {
-        List<Catagory> list=new ArrayList<>();
-        list.add(new Catagory("UIT cinema sinh viên"));
-        list.add(new Catagory("UIT cinema thủ đức"));
-        list.add(new Catagory("UIT cinema quận 1"));
-        return list;
-    }
-    private  List<NgayChieu> getListNgayChieu(){
-        List<NgayChieu> ls=new ArrayList<>();
-        ls.add(new NgayChieu("Thứ Hai","20"));
-        ls.add(new NgayChieu("Thứ Ba","21"));
-        ls.add(new NgayChieu("Thứ Tư","22"));
-        ls.add(new NgayChieu("Thứ Năm","23"));
-        ls.add(new NgayChieu("Thứ Sáu","24"));
-        ls.add(new NgayChieu("Thứ Bảy","25"));
-        ls.add(new NgayChieu("Chủ Nhật","26"));
-        return ls;
-    }
+
 }

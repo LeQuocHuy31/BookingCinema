@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,18 +28,19 @@ public class SliderDetailActivity extends AppCompatActivity {
         iniView();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#000000"));
+        actionBar.setBackgroundDrawable(colorDrawable);
     }
 
     private void iniView() {
         String contentTitle = getIntent().getExtras().getString("content");
-        int imageResourceID = getIntent().getExtras().getInt("imgcontent");
+        String imageResourceID = getIntent().getExtras().getString("imgcontent");
         String contentDetail = getIntent().getExtras().getString("detailcontent");
 
         imageView = findViewById(R.id.detail_slider_img);
 
         Glide.with(this).load(imageResourceID).into(imageView);
-
-        imageView.setImageResource(imageResourceID);
 
         textView1 = findViewById(R.id.content_slider);
         textView1.setText(contentTitle);

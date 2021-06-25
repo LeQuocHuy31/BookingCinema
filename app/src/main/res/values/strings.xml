@@ -2,32 +2,14 @@
     <string name="app_name">UIT CINEMA</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="dangchieu">Phim đang chiếu</string>
+    <string name="sapchieu">Phim sắp chiếu</string>
     <string name="name"></string>
     <string name="user"></string>
     <string name="confirm"></string>
     <string name="isLogin">fasle</string>
-    <string name="content1">Để khuyến khích các bạn học sinh, sinh viên cũng như tạo nhiều cơ hội hơn cho các bạn xem những siêu phẩm điện ảnh đình đám, UIT Cinema chính thức áp dụng chính sách giá vé 45k. Ưu đãi chỉ dành riêng cho các bạn thành viên dưới 22 tuổi thôi đó.\n
-    Cách thức hưởng ưu đãi cực đơn giản:\n
-        Bước 1: Đăng ký tài khoản thành viên <b>UIT Cinema</b> tại www.uit.edu.vn (Bỏ qua bước này nếu bạn đã có tài khoản rồi nhé)\n
-        Bước 2: Đến rạp <b>UIT Cinema</b> gần nhất và xuất trình giấy tờ tuỳ thân chứng minh “Em chưa 22” (CMND hoặc giấy tờ tuỳ thân có ảnh và năm sinh) và đọc thông tin tài khoản đã đăng ký (email hoặc số điện thoại) cho nhân viên để kích hoạt tài khoản Thành Viên U22 nhé ♥️</string>
-    <string name="content2">Từ giờ đặt vé đã quá dễ dàng cho các tín đồ mê phim khi vừa có thể chọn chỗ ngồi đẹp, lại vừa được hoàn tiền 10% siêu tiết kiệm khi mua vé xem phim <b>UIT Cinema</b> và chọn thanh toán bằng Ví MoMo. Đặc biệt là bạn có thể mua KHÔNG GIỚI HẠN số lượng vé mà vẫn được hoàn tiền 10%.\n
-        Điều kiện chương trình:\n
-        Thời gian chương trình: Từ 04/03/2021 – đến khi có thông báo mới\n
-        Chương trình áp dụng cho tất cả các khách hàng của Ví MoMo và cho tất cả các loại vé của <b>UIT Cinema</b> (không áp dụng cho combo và dịch vụ đi kèm)\n
-        Ưu đãi áp dụng cho các khách hàng đang liên kết ngân hàng với Ví MoMo.\n
-        Ưu đãi không được áp dụng đồng thời với ưu đãi hoặc thẻ quà khác.\n</string>
-    <string name="content3">Lễ này đến <b>UIT Cinema</b> để rinh ngay phần quà hấp dẫn thôi nè. Cụ thể:
-        Tặng 01 sữa rửa mặt Nivea khi mua combo special bất kỳ tại UIT Cinema nhà văn hóa Sinh Viên từ ngày 29.04.2021.\n
-        Lưu ý:\n
-        – Số lượng quà tặng có hạn, chương trình sẽ kết thúc khi hết quà tặng.\n
-        – Quà tặng ngẫu nhiên trong các dòng sản phẩm sữa rửa mặt của Nivea.\n
-        – Trong mọi trường hợp, quyết định thuộc về BHD Star Cineplex.\n
-    </string>
-    <string name="content4">Khởi đầu 01 tuần mới thật vui vẻ vì đã có <b>“HAPPY MONDAY”</b> của <b>UIT Cinema</b>\n
-        Với “HAPPY MONDAY”, bạn được gì?\n
-        Xem phim 2D chỉ từ 50,000đ/vé\n
-        Xem phim 3D chỉ từ 80,000đ/vé\n
-        *  Giá vé có thể thay đổi theo từng rạp. Xin vui lòng truy cập website mục “Hệ Thống Rạp” để biết giá vé cụ thể.\n</string>
+    <string name="diachi1">Nhà văn hóa sinh viên-ĐHQG Tp.HCM, Linh Trung, Thủ Đức, Tp Hồ Chí Minh</string>
+    <string name="diachi2">Số 10 Võ Văn Ngân, Linh Trung, Thủ Đức, Tp Hồ Chí Minh</string>
     <string name="thanhtoan">Chính sách thanh toán</string>
     <string name="noidungthanhtoan">Khách hàng có thể lựa chọn các hình thức thanh toán sau để thanh toán cho giao dịch đặt vé trên App - UIT Cinema \n - Thẻ ATM(Thẻ ghi nợ/thanh toán/trả trước nội địa)\n - Thẻ tín dụng, thẻ ghi nợ \n - Điểm thưởng thành viên UIT Cinema \n - Thẻ quà tặng \n - Ticket Voucher </string>
     <string name="chinhsach">Quy đinh và chính sách chung</string>
@@ -41,6 +23,4 @@
     <b>Không gian phục vụ: </b>Chúng tôi cam kết mang đến một không gian sạch sẽ, thoải mái và thuận lợi, để khách hàng luôn cảm thấy được trân trọng và được phục vụ chu đáo. \n
     <b>Địa điểm an toàn: </b>Chúng tôi cam kết đảm bảo một không gian giải trí an ninh và an toàn để khách hàng quay lại thường xuyên.\n
     <b>Âm thanh hình ảnh: </b>Chúng tôi cam kết cung cấp chất lượng âm thanh và hình ảnh theo tiêu chuẩn cao nhằm gìn giữ, quảng bá và nâng cao trải nghiệm điện ảnh như chính sự kỳ vọng của các nhà làm phim và khán giả xem phim.</string>
-    <string name="ve">Vui lòng đưa mã số này đến quầy vé UIT Cinema để nhận vé của bạn</string>
-    <string name="luuy"><b>Lưu ý</b> UIT Cinema không chấp nhận hoàn tiền hoặc đổi vé đã thanh toán thành công trên website hay trên app UIT Cinema</string>
 </resources>

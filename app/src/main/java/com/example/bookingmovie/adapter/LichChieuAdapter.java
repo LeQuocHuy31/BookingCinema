@@ -11,10 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bookingmovie.DetailShowTime;
 import com.example.bookingmovie.R;
 import com.example.bookingmovie.modelshowtime.ThongTinLichChieu;
-
 
 import java.util.List;
 
@@ -43,7 +43,8 @@ public class LichChieuAdapter extends RecyclerView.Adapter<LichChieuAdapter.Lich
         if(lichChieu==null){
             return;
         }
-        holder.imgPhim.setImageResource(lichChieu.getResourceImg());
+        //holder.imgPhim.setImageResource(lichChieu.getResourceImg());
+        Glide.with(mContext).load(lichChieu.getResourceImg()).into(holder.imgPhim);
         holder.tvTenPhim.setText(lichChieu.getTenPhim());
         //holder.tvDanhGia.setText(lichChieu.getDanhGia());
         holder.tvDoiTuong.setText(lichChieu.getDoituong());
@@ -57,7 +58,6 @@ public class LichChieuAdapter extends RecyclerView.Adapter<LichChieuAdapter.Lich
             public void onClick(View view) {
                 Intent i = new Intent(mContext, DetailShowTime.class);
                 i.putExtra("tenPhim", holder.tvTenPhim.getText());
-                //holder.tvTenPhim.getText();
                 mContext.startActivity(i);
             }
         });

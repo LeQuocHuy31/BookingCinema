@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bookingmovie.R;
 import com.example.bookingmovie.modelshowtime.NgayChieu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,6 +21,7 @@ public class NgayChieuAdapter extends RecyclerView.Adapter<NgayChieuAdapter.Ngay
     private AdapterXuatChieu adapterXuatChieu;
     private RecyclerView rcvXuatChieu;
     private Context mContext;
+    private ArrayList<Integer> mSelectedList = new ArrayList<>();
     private List<NgayChieu> mListNgayChieu;
     private int row_index;
 
@@ -30,6 +32,13 @@ public class NgayChieuAdapter extends RecyclerView.Adapter<NgayChieuAdapter.Ngay
     public void setData(List<NgayChieu> list){
         this.mListNgayChieu=list;
         notifyDataSetChanged();
+    }
+    public interface OnSelectedChangedListener {
+        void onSelectedChanged(List<Integer> selects);
+    }
+    private NgayChieuAdapter.OnSelectedChangedListener mListener;
+    public void setOnSelectedChangedListener(NgayChieuAdapter.OnSelectedChangedListener listener) {
+        mListener = listener;
     }
     @NonNull
     @Override
@@ -58,6 +67,8 @@ public class NgayChieuAdapter extends RecyclerView.Adapter<NgayChieuAdapter.Ngay
             holder.itemView.setBackgroundColor(Color.parseColor("#F44336"));
             holder.tvThu.setTextColor(Color.parseColor("#ffffff"));
             holder.tvNgay.setTextColor(Color.parseColor("#ffffff"));
+            mSelectedList.add(position);
+            if(mListener!=null) mListener.onSelectedChanged(mSelectedList);
         }
         else
         {

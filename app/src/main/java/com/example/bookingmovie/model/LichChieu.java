@@ -2,21 +2,25 @@ package com.example.bookingmovie.model;
 
 public class LichChieu {
     private String id;
-    private String idPhim;
-    private String idPhong;
+    private String idMovie;
+    private String tenPhim;
+    private int phong;
     private String dinhDang;
-    private String thoiGian;
-    private String ngayChieu;
-    private int gia;
+    private int Gia;
+    private String mtrangthaighe;
+    private String ngay;
+    private String mGio;
 
-    public LichChieu(String id, String idPhim, String idPhong, String dinhDang, String thoiGian, String ngayChieu, int gia) {
+    public LichChieu(String id, String idMovie, String tenPhim, int phong, String dinhDang, int gia, String mtrangthaighe, String ngay, String mGio) {
         this.id = id;
-        this.idPhim = idPhim;
-        this.idPhong = idPhong;
+        this.idMovie = idMovie;
+        this.tenPhim = tenPhim;
+        this.phong = phong;
         this.dinhDang = dinhDang;
-        this.thoiGian = thoiGian;
-        this.ngayChieu = ngayChieu;
-        this.gia = gia;
+        Gia = gia;
+        this.mtrangthaighe = mtrangthaighe;
+        this.ngay = ngay;
+        this.mGio = mGio;
     }
 
     public String getId() {
@@ -27,20 +31,28 @@ public class LichChieu {
         this.id = id;
     }
 
-    public String getIdPhim() {
-        return idPhim;
+    public String getIdMovie() {
+        return idMovie;
     }
 
-    public void setIdPhim(String idPhim) {
-        this.idPhim = idPhim;
+    public void setIdMovie(String idMovie) {
+        this.idMovie = idMovie;
     }
 
-    public String getIdPhong() {
-        return idPhong;
+    public String getTenPhim() {
+        return tenPhim;
     }
 
-    public void setIdPhong(String idPhong) {
-        this.idPhong = idPhong;
+    public void setTenPhim(String tenPhim) {
+        this.tenPhim = tenPhim;
+    }
+
+    public int getPhong() {
+        return phong;
+    }
+
+    public void setPhong(int phong) {
+        this.phong = phong;
     }
 
     public String getDinhDang() {
@@ -51,27 +63,35 @@ public class LichChieu {
         this.dinhDang = dinhDang;
     }
 
-    public String getThoiGian() {
-        return thoiGian;
-    }
-
-    public void setThoiGian(String thoiGian) {
-        this.thoiGian = thoiGian;
-    }
-
-    public String getNgayChieu() {
-        return ngayChieu;
-    }
-
-    public void setNgayChieu(String ngayChieu) {
-        this.ngayChieu = ngayChieu;
-    }
-
     public int getGia() {
-        return gia;
+        return Gia;
     }
 
     public void setGia(int gia) {
-        this.gia = gia;
+        Gia = gia;
+    }
+
+    public String getMtrangthaighe() {
+        return mtrangthaighe;
+    }
+
+    public void setMtrangthaighe(String mtrangthaighe) {
+        this.mtrangthaighe = mtrangthaighe;
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
+    }
+
+    public String getmGio() {
+        return mGio;
+    }
+
+    public void setmGio(String mGio) {
+        this.mGio = mGio;
     }
 }

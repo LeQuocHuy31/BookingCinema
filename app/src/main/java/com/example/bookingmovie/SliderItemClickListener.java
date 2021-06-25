@@ -2,7 +2,9 @@ package com.example.bookingmovie;
 
 import android.widget.ImageView;
 
+import com.example.bookingmovie.model.KhuyenMai;
+
 public interface SliderItemClickListener {
-    void onSliderClick(SliderItem sliderItem, ImageView sliderImage);
+    void onSliderClick(KhuyenMai sliderItem, ImageView sliderImage);
 }
 

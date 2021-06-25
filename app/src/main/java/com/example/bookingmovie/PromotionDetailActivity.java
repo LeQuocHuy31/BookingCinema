@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -22,18 +24,19 @@ public class PromotionDetailActivity extends AppCompatActivity {
         iniView();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#000000"));
+        actionBar.setBackgroundDrawable(colorDrawable);
     }
 
     private void iniView() {
         String contentTitle = getIntent().getExtras().getString("TitlePromotion");
-        int imageResourceID = getIntent().getExtras().getInt("ImgPromotion");
+        String imageResourceID = getIntent().getExtras().getString("ImgPromotion");
         String contentDetail = getIntent().getExtras().getString("DetailPromotion");
 
         imageView = findViewById(R.id.img_promotion);
 
-        Glide.with(this).load(imageResourceID).into(imageView);
-
-        imageView.setImageResource(imageResourceID);
+        Glide.with(getApplicationContext()).load(imageResourceID).into(imageView);
 
         textView1 = findViewById(R.id.title_promotion);
         textView1.setText(contentTitle);

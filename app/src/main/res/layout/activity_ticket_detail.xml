@@ -1,101 +1,368 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myVerticalScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TicketDetailActivity">
+    android:background="@color/black"
+    android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="246dp"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tên phim"
-            android:layout_marginBottom="20dp"
-            android:textSize="20sp" />
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp">
 
-        <TextView
+            <com.vipulasri.ticketview.TicketView
+                android:id="@+id/ticketView"
+                android:layout_width="match_parent"
+                android:layout_height="530dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:ticketBorderWidth="1dp"
+                app:ticketCornerType="rounded"
+                app:ticketDividerPadding="0dp"
+                app:ticketDividerType="dash"
+                app:ticketElevation="8dp"
+                app:ticketOrientation="horizontal"
+                app:ticketScallopPositionPercent="60"
+                app:ticketScallopRadius="10dp"
+                app:ticketShowBorder="false"
+                app:ticketShowDivider="true" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="Captain Marvel"
+                    android:textStyle="bold"
+                    android:textSize="22dp" />
+
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtMinAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="C18"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:background="@drawable/border_background_primary_color_no_padding" />
+
+                    <TextView
+                        android:id="@+id/txtDescription"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="90 phút - 2D - Phụ đề" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/txtCinema"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/black"
+                            android:text="UIT CINEMA" />
+
+                        <TextView
+                            android:id="@+id/txtAddress"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/black"
+                            android:text="Linh Trung, Thủ Đức, thành phố Hồ Chí Minh" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/cinemaIcon"
+                        android:layout_weight="6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:padding="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thời gian"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/txtTime"
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="22:03"
+                            android:layout_gravity="center" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Ngày"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtDate"
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="21 - 04 - 2019"
+                            android:layout_gravity="center" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Phòng"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/txtRoom"
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CGV-01"
+                            android:layout_gravity="center" />
+
+                    </LinearLayout>
+
+                </LinearLayout> <!--Date, time, room-->
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ghế"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/txtSeatPlaces"
+                            android:paddingRight="5dp"
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="F1 F2"
+                            android:layout_gravity="center" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
+                        <TextView
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Combo"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/txtCombos"
+                            android:paddingLeft ="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="11dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout> <!--Seats and combos-->
+
+            </LinearLayout> <!--Top ticket view content-->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgQRCode"
+                        android:layout_width="210dp"
+                        android:layout_height="185dp"
+                        android:layout_weight="1"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="5dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Code"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black" />
+
+                        <TextView
+                            android:id="@+id/txtCode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="ABCXYZ"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="22dp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="11dp"
+                    android:textAlignment="center"
+                    android:text="*VÉ ĐÃ MUA KHÔNG THỂ TRẢ LẠI"/>
+
+            </LinearLayout> <!--Bottom ticket view content-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout> <!--TicketView and content inside-->
+        <Button
+            android:id="@+id/btn_goHome"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ngày chiếu"
-            android:textSize="16sp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_1"
+            android:layout_centerHorizontal="true"
+            android:text="Home"
+            android:padding="5dp"
+            android:textColor="@color/FlatRed"
+            android:background="@drawable/item_button"/>
+    </RelativeLayout> <!--Purchased ticket info-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ghế"
-            android:textSize="16sp"
-            android:layout_marginBottom="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phòng chiếu"
-            android:textSize="16sp"
-            android:layout_marginBottom="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bắp nước"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginTop="10dp"
-        android:text="MÃ"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="360dp"
-        android:layout_height="80dp"
-        android:text="@string/ve"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.061" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Tổng cộng"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="360dp"
-        android:layout_height="80dp"
-        android:text="@string/luuy"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.647"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.404" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

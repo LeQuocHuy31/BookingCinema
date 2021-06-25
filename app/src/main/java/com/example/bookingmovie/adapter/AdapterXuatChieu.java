@@ -1,6 +1,8 @@
 package com.example.bookingmovie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookingmovie.ChooseSeat;
+import com.example.bookingmovie.Login;
 import com.example.bookingmovie.R;
 import com.example.bookingmovie.modelshowtime.XuatChieu;
 
@@ -40,8 +44,20 @@ public class AdapterXuatChieu extends  RecyclerView.Adapter<AdapterXuatChieu.Xua
             return;
         }
         holder.tvXuatChieu.setText(xuatChieu.getXuatChieu());
+        holder.tvXuatChieu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = mContext.getSharedPreferences("Login",Context.MODE_PRIVATE);
+                if (sharedPreferences.getString("Login","false").equals("false")){
+                    Intent intent = new Intent(mContext, Login.class);
+                    mContext.startActivity(intent);
+                }else{
+                Intent intent = new Intent(mContext, ChooseSeat.class);
+                intent.putExtra("xuatChieu", holder.tvXuatChieu.getText());
+                mContext.startActivity(intent);}
+            }
+        });
     }
-
     @Override
     public int getItemCount() {
         if(mListXuatChieu!= null){
