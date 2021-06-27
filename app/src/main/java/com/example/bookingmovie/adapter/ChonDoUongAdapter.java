@@ -116,3 +116,9 @@ public class ChonDoUongAdapter extends RecyclerView.Adapter<ChonDoUongAdapter.Ch
         }
     }
 }
+//cha bỏ cái quay lại chỗ đó đi đc k
+//nhưng nếu thế thì chỗ đó hơi kì
+//chỗ đso thì vẫ để á
+//bỏ chỗ kia thôi chứ để thấy lỗi á kiểu qay lại đvé
+//thì thì phải tạo 2 trang ticket, mình đang cho 2 cái cùng hiển thị một cái
+//theo mk tạo 2 trng di

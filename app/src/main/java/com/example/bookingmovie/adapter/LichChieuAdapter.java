@@ -43,16 +43,10 @@ public class LichChieuAdapter extends RecyclerView.Adapter<LichChieuAdapter.Lich
         if(lichChieu==null){
             return;
         }
-        //holder.imgPhim.setImageResource(lichChieu.getResourceImg());
         Glide.with(mContext).load(lichChieu.getResourceImg()).into(holder.imgPhim);
         holder.tvTenPhim.setText(lichChieu.getTenPhim());
-        //holder.tvDanhGia.setText(lichChieu.getDanhGia());
         holder.tvDoiTuong.setText(lichChieu.getDoituong());
-        //holder.tvNamSX.setText(lichChieu.getNamSX());
         holder.tvThoiGian.setText(lichChieu.getThoigian());
-        //holder.img2d.setImageResource(lichChieu.getResourceDinhdangphim());
-       // holder.img3d.setImageResource(lichChieu.getResourceDinhdangphim2());
-        //holder.imgImax.setImageResource(lichChieu.getResourceDinhdangphim3());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

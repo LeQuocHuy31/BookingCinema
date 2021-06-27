@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChooseSeat"></activity>
+        <activity android:name=".TicketDetailFragActivity"></activity>
+        <activity android:name=".ChooseSeat" />
         <activity android:name=".PayTicket" />
         <activity android:name=".AccountInfo" />
         <activity android:name=".ChooseTypePayment" />

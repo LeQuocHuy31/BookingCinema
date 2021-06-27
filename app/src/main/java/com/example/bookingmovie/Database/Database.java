@@ -220,7 +220,7 @@ public class Database {
         }
         return List;
     }
-    public List<ThongTinLichChieu> getThongTinLichChieu(String tenrap){
+    public List<ThongTinLichChieu> getThongTinLichChieu(String tenrap, String ngaychieu){
         List<ThongTinLichChieu>  list = new ArrayList<>();
         ConnectionHelper con= new ConnectionHelper();
         Connection connection=con.connectionclass();
@@ -228,7 +228,7 @@ public class Database {
             Statement statement=null;
             try {
                 statement=connection.createStatement();
-                ResultSet resultSet=statement.executeQuery("SELECT DISTINCT p.tenphim,p.kiemduyet,p.thoiluong,p.imgphim FROM Phim p, LichChieu lc WHERE lc.idphim=p.id and p.tinhtrang=1 and lc.rapphim like N'%" + tenrap + "%'");
+                ResultSet resultSet=statement.executeQuery("SELECT DISTINCT p.tenphim,p.kiemduyet,p.thoiluong,p.imgphim FROM Phim p, LichChieu lc WHERE lc.idphim=p.id and p.tinhtrang=1 and lc.rapphim like N'%" + tenrap + "%' and lc.ngaychieu like N'%"+ngaychieu+"%'");
                 while (resultSet.next()){
                     ThongTinLichChieu thongTinLichChieu= new ThongTinLichChieu(resultSet.getString(4),resultSet.getString(1),resultSet.getString(2),resultSet.getString(3));
                     list.add(thongTinLichChieu);

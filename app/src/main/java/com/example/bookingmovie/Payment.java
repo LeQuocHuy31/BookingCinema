@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -105,6 +106,7 @@ public class Payment extends AppCompatActivity {
         String thucuong = sharedPref.getString("dichvu", "");
         String tongtien = sharedPref.getString("tongtien", "");
         String lc = sharedPref.getString("idLichChieu", "");
+        tvDichVu.setMovementMethod(new ScrollingMovementMethod());
         idlichChieu = Integer.parseInt(lc);
         tvPhim.setText(tenPhim);
         tvRap.setText(rap);
@@ -137,7 +139,7 @@ public class Payment extends AppCompatActivity {
         List<ThanhToan> list = new ArrayList<>();
         list.add(new ThanhToan(R.drawable.logo_momo, "Ví MoMo"));
         list.add(new ThanhToan(R.drawable.visa, "Thẻ quốc tế (Visa, Master)"));
-        list.add(new ThanhToan(R.drawable.atm, "Thể ngân hàng ATM"));
+        list.add(new ThanhToan(R.drawable.atm, "Thẻ ngân hàng ATM"));
         return list;
     }
 

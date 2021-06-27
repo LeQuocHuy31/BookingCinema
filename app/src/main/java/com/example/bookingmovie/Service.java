@@ -49,13 +49,12 @@ public class Service extends AppCompatActivity {
         tvPhim = findViewById(R.id.tv_phim);
         SharedPreferences sharedPref = this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String tenPhim = sharedPref.getString("tenphim", "");
-        tvPhim.setText(tenPhim);
+        tvPhim.setText("Các loại dịch vụ đi kèm");
         chonDoUongAdapter = new ChonDoUongAdapter(this);
         chonDoUongAdapter.setOnSelectedChangedListener(this::setOnSelectedChanged);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rcvKhuyenMai.setLayoutManager(linearLayoutManager);
         connectdata = new Database();
-        //chonDoUongAdapter.setData(getListThucUong());
         list = connectdata.getListDichVu();
         chonDoUongAdapter.setData(list);
         rcvKhuyenMai.setAdapter(chonDoUongAdapter);
@@ -105,18 +104,20 @@ public class Service extends AppCompatActivity {
 
     public void setOnSelectedChanged(List<Integer> selects) {
         int total = 0;
-        String dichVu = "";
+        String dichVuTong = "";
         mSelects.clear();
         mSelects.addAll(selects);
         int tongthucuong = 0;
         int kthu = 0;
         for (int select : selects) {
-            tongthucuong = list.get(select).getSoluong() * list.get(select).getGia();
+            tongthucuong = list.get(select).getGia();
             total = total + tongthucuong;
-            dichVu = dichVu + list.get(select).getSoluong() + " " + list.get(select).getTenDichVu();
+            String dichvu= list.get(select).getSoluong() + " X " + list.get(select).getTenDichVu() +";";
+            if (dichVuTong.contains(dichvu)==false)
+            dichVuTong = dichVuTong + dichvu;
         }
         total = total + tong;
-        tenDichVu = dichVu;
+        tenDichVu = dichVuTong;
         tvPrice.setText(String.valueOf(total) + " ₫");
     }
 }

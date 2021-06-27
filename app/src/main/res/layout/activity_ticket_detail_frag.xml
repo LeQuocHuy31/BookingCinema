@@ -53,7 +53,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/txtTitle"
+                    android:id="@+id/txtTitlef"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
@@ -101,7 +101,7 @@
                         android:layout_weight="1">
 
                         <TextView
-                            android:id="@+id/txtCinema"
+                            android:id="@+id/txtCinemaf"
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                             android:text="UIT CINEMA" />
 
                         <TextView
-                            android:id="@+id/txtAddress"
+                            android:id="@+id/txtAddressf"
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -151,7 +151,7 @@
                             android:layout_gravity="center" />
 
                         <TextView
-                            android:id="@+id/txtTime"
+                            android:id="@+id/txtTimef"
                             android:textColor="@android:color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -182,7 +182,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/txtDate"
+                            android:id="@+id/txtDatef"
                             android:textColor="@android:color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -213,7 +213,7 @@
                             android:layout_gravity="center" />
 
                         <TextView
-                            android:id="@+id/txtRoom"
+                            android:id="@+id/txtRoomf"
                             android:textColor="@android:color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -248,7 +248,7 @@
                             android:layout_gravity="center" />
 
                         <TextView
-                            android:id="@+id/txtSeatPlaces"
+                            android:id="@+id/txtSeatPlacesf"
                             android:paddingRight="5dp"
                             android:textColor="@android:color/black"
                             android:layout_width="wrap_content"
@@ -280,7 +280,7 @@
                             android:layout_gravity="center" />
 
                         <TextView
-                            android:id="@+id/txtCombos"
+                            android:id="@+id/txtCombosf"
                             android:paddingLeft ="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -333,7 +333,7 @@
                             android:textColor="@android:color/black" />
 
                         <TextView
-                            android:id="@+id/txtCode"
+                            android:id="@+id/txtCodef"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -358,7 +358,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout> <!--TicketView and content inside-->
         <Button
-            android:id="@+id/btn_goHome"
+            android:id="@+id/btn_goHomef"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_1"

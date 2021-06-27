@@ -5,8 +5,9 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="205dp"
-    android:layout_height="300dp"
+    android:layout_height="330dp"
     android:layout_margin="5dp"
+    android:layout_marginRight="5dp"
     app:cardCornerRadius="4dp">
     <LinearLayout
         android:orientation="vertical"
@@ -14,9 +15,9 @@
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/item_img_movie"
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
             android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             android:background="#2d2d2d"/>
         <TextView
             android:id="@+id/item_txt_movie"

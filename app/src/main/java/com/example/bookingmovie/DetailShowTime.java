@@ -79,14 +79,14 @@ public class DetailShowTime extends AppCompatActivity {
         //Lấy tên rạp phim
         rapphim= sharedPref.getString("rapphim","");
         spnRapPhim=findViewById(R.id.spn_rapphim);
-        if(rapphim.equals("UIT cinema sinh viên")) {
-            String[] RapPhim = {"UIT cinema sinh viên", "UIT cinema thủ đức"};
+        if(rapphim.equals("UIT cinema Sinh Viên")) {
+            String[] RapPhim = {"UIT cinema Sinh Viên", "UIT cinema Thủ Đức"};
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, RapPhim);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spnRapPhim.setAdapter(adapter);
         }
         else{
-            String[] RapPhim = {"UIT cinema thủ đức", "UIT cinema sinh viên"};
+            String[] RapPhim = {"UIT cinema Thủ Đức", "UIT cinema Sinh Viên"};
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, RapPhim);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spnRapPhim.setAdapter(adapter);

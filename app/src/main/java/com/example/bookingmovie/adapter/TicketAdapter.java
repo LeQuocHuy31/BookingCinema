@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.bookingmovie.R;
 import com.example.bookingmovie.TicketDetailActivity;
+import com.example.bookingmovie.TicketDetailFragActivity;
 import com.example.bookingmovie.model.VeUser;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.MyViewHold
         holder.time.setText(mData.get(position).getThoigian());
         holder.rap.setText(mData.get(position).getRap());
         holder.cardView.setOnClickListener(v -> {
-            Intent intent = new Intent(mContext, TicketDetailActivity.class);
+            Intent intent = new Intent(mContext, TicketDetailFragActivity.class);
             intent.putExtra("mave",mData.get(position).getIdve());
             mContext.startActivity(intent);
         });

@@ -48,7 +48,7 @@ public class Showtimefragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_showtime,container,false);
 
         spnCatagory=v.findViewById(R.id.spn_catagory);
-        String[] RapPhim={"UIT cinema thủ đức","UIT cinema sinh viên"};//android.R.layout.simple_spinner_item
+        String[] RapPhim={"UIT cinema Thủ Đức","UIT cinema Sinh Viên"};//android.R.layout.simple_spinner_item
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,RapPhim);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCatagory.setAdapter(adapter);
@@ -56,12 +56,11 @@ public class Showtimefragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 rapphim =spnCatagory.getSelectedItem().toString();
-                SetThongTinLichChieu(rapphim);
+                SetThongTinLichChieu(rapphim,tv_date.getText().toString());
                 SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("rapphim", rapphim);
                 editor.commit();
-
             }
 
             @Override
@@ -85,6 +84,7 @@ public class Showtimefragment extends Fragment {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         calendar.set(year,month,dayOfMonth);
                         tv_date.setText(simpleDateFormat.format(calendar.getTime()));
+                        SetThongTinLichChieu(rapphim,tv_date.getText().toString());
                     }
                 },mYear,mMonth,mDate);
                 datePickerDialog.show();
@@ -92,16 +92,16 @@ public class Showtimefragment extends Fragment {
         });
         rapphim =spnCatagory.getSelectedItem().toString();
         rcvLichChieu= v.findViewById(R.id.rcv_lichchieu);
-        SetThongTinLichChieu(rapphim);
+        SetThongTinLichChieu(rapphim,tv_date.getText().toString());
         return v;
     }
 
-    private void SetThongTinLichChieu(String rapphim){
+    private void SetThongTinLichChieu(String rapphim,String ngaychieu){
         lichChieuAdapter =new LichChieuAdapter(getContext());
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         rcvLichChieu.setLayoutManager(linearLayoutManager);
         connectdata =new Database();
-        list=connectdata.getThongTinLichChieu(rapphim);
+        list=connectdata.getThongTinLichChieu(rapphim,ngaychieu);
         lichChieuAdapter.setData(list);
         rcvLichChieu.setAdapter(lichChieuAdapter);
     }

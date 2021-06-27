@@ -213,6 +213,7 @@
         android:background="@drawable/line_bottom"
         android:gravity="center_horizontal|left"
         android:padding="5dp"
+        android:scrollbars="vertical"
         android:text="Combo coca"
         android:textColor="@color/FlatPurple"
         android:textSize="16sp"
